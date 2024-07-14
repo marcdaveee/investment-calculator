@@ -20,11 +20,17 @@ export class UserInputComponent {
 
   onSubmit() {
     this._investmentService.calculateInvestmentResults({
-      initialInvestment: +this.enteredAnnualInvestment,
+      initialInvestment: +this.enteredInitialInvestment,
       annualInvestment: +this.enteredAnnualInvestment,
       expectedReturn: +this.enteredExpectedReturn,
       duration: +this.enteredDuration,
     });
+
+    // Reset form values
+    this.enteredInitialInvestment = '0';
+    this.enteredAnnualInvestment = '0';
+    this.enteredExpectedReturn = '5';
+    this.enteredDuration = '10';
 
     console.log('result: ', this._investmentService.resultData);
   }
